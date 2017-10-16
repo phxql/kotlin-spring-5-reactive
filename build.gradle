@@ -1,0 +1,26 @@
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.1.51"
+}
+
+// Apply the application plugin to add support for building an application
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8"
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2.1'
+}
+
+mainClassName = 'de.mkammerer.spring5.MainKt'
+
