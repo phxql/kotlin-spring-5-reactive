@@ -1,8 +1,6 @@
 plugins {
     id "org.jetbrains.kotlin.jvm" version "1.1.51"
 }
-
-// Apply the application plugin to add support for building an application
 apply plugin: 'application'
 
 repositories {
@@ -15,6 +13,7 @@ dependencies {
 }
 
 compileKotlin {
+    // Emit Java 8 bytecode
     kotlinOptions.jvmTarget = "1.8"
 }
 
