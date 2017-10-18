@@ -14,20 +14,24 @@ import reactor.ipc.netty.http.server.HttpServer
 private const val PORT = 8080
 
 fun main(args: Array<String>) {
-
+    // Bootstrap Spring context
     val context = GenericApplicationContext()
     context.registerBean { HelloController(context.getBean()) }
     context.registerBean { PingController() }
     context.registerBean { HelloServiceImpl() }
     context.refresh()
 
+    // Register HTTP routes
     val route = RouterFunctions
             .route(RequestPredicates.GET("/hello-world"), context.getBean<HelloController>().helloWorld())
             .andRoute(RequestPredicates.GET("/ping"), context.getBean<PingController>().ping())
 
+    // Create server
     val httpHandler = RouterFunctions.toHttpHandler(route)
     val adapter = ReactorHttpHandlerAdapter(httpHandler)
     val server = HttpServer.create(PORT)
+
+    // Start server and block
     server.startAndAwait(adapter)
 }
 
