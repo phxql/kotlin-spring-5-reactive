@@ -7,9 +7,18 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    springVersion = '5.0.0.RELEASE'
+}
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "org.jetbrains.kotlin:kotlin-reflect"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8"
+
+    compile group: 'org.springframework', name: 'spring-webflux', version: springVersion
+    compile group: 'org.springframework', name: 'spring-context', version: springVersion
+    compile group: 'io.projectreactor.ipc', name: 'reactor-netty', version: '0.7.0.RELEASE'
 }
 
 compileKotlin {
