@@ -9,7 +9,7 @@ built with Spring 5 running on Netty. Language of choice is Kotlin.
 
 ## Running
 
-`./gradlew run` and open [http://localhost:8080/hello-world](http://localhost:8080/hello-world)
+`./gradlew run` and open [http://localhost:8080/hello/world](http://localhost:8080/hello/world)
 
 ## License
 

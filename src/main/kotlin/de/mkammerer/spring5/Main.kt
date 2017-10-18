@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
 
     // Register HTTP routes
     val route = RouterFunctions
-            .route(RequestPredicates.GET("/hello-world"), context.getBean<HelloController>().helloWorld())
+            .route(RequestPredicates.GET("/hello/{name}"), context.getBean<HelloController>().hello())
             .andRoute(RequestPredicates.GET("/ping"), context.getBean<PingController>().ping())
 
     // Create server

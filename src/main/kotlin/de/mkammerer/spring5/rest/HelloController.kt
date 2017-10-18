@@ -8,7 +8,8 @@ import org.springframework.web.reactive.function.server.ServerResponse
 class HelloController(
         private val helloService: HelloService
 ) {
-    fun helloWorld(): HandlerFunction<ServerResponse> = HandlerFunction<ServerResponse> { request ->
-        ServerResponse.ok().body(BodyInserters.fromPublisher(helloService.greeting(), String::class.java))
+    fun hello(): HandlerFunction<ServerResponse> = HandlerFunction<ServerResponse> { request ->
+        val name = request.pathVariable("name")
+        ServerResponse.ok().body(BodyInserters.fromPublisher(helloService.greeting(name), String::class.java))
     }
 }
